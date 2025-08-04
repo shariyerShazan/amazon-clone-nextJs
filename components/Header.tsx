@@ -58,7 +58,7 @@ function Header() {
             />
             <Button 
               type='submit'
-              className='bg-myColor/80 rounded-none rounded-r-md hover:bg-myColor text-black font-bold cursor-pointer'
+              className='bg-myColor rounded-none rounded-r-md hover:bg-myColor/80  text-black font-bold cursor-pointer'
             >
               <IoMdSearch size={20}/>
             </Button>

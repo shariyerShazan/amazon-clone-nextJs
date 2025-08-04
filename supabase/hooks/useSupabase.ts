@@ -13,6 +13,7 @@ interface Product {
 export const useSupabase = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [filterProducts, setFilterProducts] = useState<Product[]>([])
+  const [singleProduct, setSingleProduct] = useState<Product[]>([])
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*")
@@ -40,11 +41,26 @@ export const useSupabase = () => {
       console.log(error)
     }
   }
+  const getSingleProduct = async (id:string) => {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id" , id)
+    if (data) {
+        setSingleProduct(data)
+      console.log(data)
+    }
+    if (error) {
+      console.log(error)
+    }
+  }
 
   return {
     products,
     filterProducts,
+    singleProduct ,
     getProducts,
     getFilterProducts,
+    getSingleProduct
   }
 }
