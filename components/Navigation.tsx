@@ -16,14 +16,14 @@ function Navigation() {
     <div className='bg-[#232F3E] '>
        <div className='flex w-[90%]  mx-auto py-0.5'>
        <div>
-            <Button className='bg-navColor hover:bg-navColor text-white border border-transparent hover:border-white cursor-pointer'>
+            <Button className='!bg-navColor hover:!bg-navColor !text-white !border !border-transparent hover:!border-white !cursor-pointer'>
                  <MdOutlineMenu size={25} /> All
             </Button>
         </div>
         {
             navItem.map((item: any , index: number)=>{
                 return <Button
-                    className='bg-navColor hover:bg-navColor text-white border border-transparent hover:border-white cursor-pointer'
+                    className='bg-navColor hover:!bg-navColor !text-white !border !border-transparent hover:!border-white !cursor-pointer'
                     key={index}
                 >
                     {item.name}

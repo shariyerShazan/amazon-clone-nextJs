@@ -1,12 +1,32 @@
 "use client"
-import React from 'react'
+import SearchResult from "@/components/SearchResult"
+import { useSupabase } from "@/supabase/hooks/useSupabase"
+import { useParams } from "next/navigation"
+import React, { useEffect } from "react"
 
-function page() {
+function Page() {
+  const params = useParams()
+  const query = params?.query as string | undefined 
+  const { filterProducts, getFilterProducts } = useSupabase()
+
+  useEffect(() => {
+    if (query) {
+      getFilterProducts({ query })
+    }
+  }, [])
+
   return (
-    <div>
-      
+    <div className="">
+      <div className="h-8 shadow-xl border-gray-200 border-b-2">
+          <div className=" w-[90%] mx-auto">
+             <p>Over {filterProducts.length} result for <span className="text-orange-700">{`"${query}"`}</span></p>
+         </div>
+      </div>
+      <div className=" w-[90%] mx-auto">
+          <SearchResult filterProducts={filterProducts}/>
+      </div>
     </div>
   )
 }
 
-export default page
+export default Page
