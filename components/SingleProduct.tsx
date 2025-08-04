@@ -16,18 +16,18 @@ function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
         const reviewCount = ratingObj.count;
 
         return (
-          <div key={product.id} className="w-[90%] mx-auto my-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div key={product.id} className="w-[90%] mx-auto my-10 grid grid-cols-1 md:grid-cols-2 items-center gap-10">
             {/* Left: Image Section */}
             <div className="bg-gray-100 p-6 rounded-md flex items-center justify-center relative h-[500px] w-full">
-  <Image
-    src={product.image}
-    alt={product.title}
-    fill
-    style={{ objectFit: 'contain' }}
-    className="p-4 mix-blend-multiply"
-    sizes="(max-width: 640px) 100vw, 250px"
-  />
-</div>
+                <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="p-4 mix-blend-multiply"
+                    sizes="(max-width: 640px) 100vw, 250px"
+                />
+                </div>
 
 
             {/* Right: Product Details */}
@@ -37,16 +37,16 @@ function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
                 {Array.from({ length: stars }).map((_, i) => (
                   <IoStar key={i} />
                 ))}
-                <span className="ml-2 text-gray-500 text-sm">{reviewCount} ratings</span>
+                <span className="ml-2 font-semibold text-blue-500 text-sm">{reviewCount} ratings</span>
               </div>
               <p className="text-3xl text-gray-900 font-semibold">${product.price}</p>
               <p className="text-gray-700 leading-relaxed">{product.description}</p>
 
               {/* Quantity Selector */}
               <div className="flex items-center gap-3 mt-3">
-                <label htmlFor="qty" className="font-medium">Quantity:</label>
-                <select id="qty" className="border rounded px-2 py-1">
-                  {[1, 2, 3, 4, 5].map(q => <option key={q} value={q}>{q}</option>)}
+                <label htmlFor="quantity" className="font-medium">Quantity:</label>
+                <select id="quantity" className="border rounded px-2 py-1">
+                  {[1, 2, 3, 4, 5 , 6 , 7, 8, 9, 10].map(quantity => <option key={quantity} value={quantity}>{quantity}</option>)}
                 </select>
               </div>
 
