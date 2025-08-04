@@ -1,11 +1,18 @@
-import React from 'react'
+"use client"
+import React, { FormEvent, useState } from 'react'
 import { IoLocationOutline } from "react-icons/io5";
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { IoMdSearch } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
+import { useRouter } from 'next/navigation';
 
 function Header() {
+    const [qurey , setQurey ]= useState<string>()
+    const router = useRouter()
+    const searchHandler = ()=>{
+        router.push(`${}`)
+    }
   return (
     <div className='bg-myColorTwo text-white '>
          <div className='flex justify-between gap-12 items-center w-[90%] mx-auto py-1'>
@@ -21,11 +28,13 @@ function Header() {
          </div>
          <div className='flex flex-1'>
              <Input
+                 value={qurey}
+                 onChange={(e:  React.ChangeEvent<HTMLInputElement>)=>setQurey(e.target.value)}
                 type='text' 
                 placeholder='Serch amazon'
                 className='focus:outline-none focus:ring-1 focus:ring-myColor focus:border-myColor bg-white w-full rounded-none rounded-l-md'
               />
-              <Button className='bg-myColor/80 rounded-none rounded-r-md hover:bg-myColor text-black font-bold'> <IoMdSearch size={20}/></Button>
+              <Button type='submit'  onClick={searchHandler} className='bg-myColor/80 rounded-none rounded-r-md hover:bg-myColor text-black font-bold'> <IoMdSearch size={20}/></Button>
          </div>
          <div className='flex  gap-6'>
             <div>
