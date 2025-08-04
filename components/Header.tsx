@@ -20,7 +20,7 @@ function Header() {
 
   return (
     <div className='bg-myColorTwo text-white'>
-      <div className='flex justify-between gap-12 items-center w-[90%] mx-auto py-1'>
+      <div className='flex justify-between gap-12 items-center w-[98%] mx-auto py-1'>
 
         {/* Left Section - Logo & Location */}
         <div className='flex gap-6'>
@@ -75,7 +75,7 @@ function Header() {
             <p className='text-sm'>Return</p>
             <p className='font-bold'>& Order</p>
           </div>
-          <div className='relative'>
+          <div className='relative mr-10'>
             <GrCart size={25} />
             <p className='absolute top-4.5 -right-8'>Cart</p>
           </div>

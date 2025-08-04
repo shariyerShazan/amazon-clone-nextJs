@@ -18,11 +18,11 @@ function Page() {
   return (
     <div className="">
       <div className="h-8 shadow-xl border-gray-200 border-b-2">
-          <div className=" w-[90%] mx-auto">
+          <div className=" w-[98%] mx-auto">
              <p>Over {filterProducts.length} result for <span className="text-orange-700">{`"${query}"`}</span></p>
          </div>
       </div>
-      <div className=" w-[90%] mx-auto">
+      <div className=" w-[98%] mx-auto">
           <SearchResult filterProducts={filterProducts}/>
       </div>
     </div>

@@ -8,7 +8,7 @@ function SearchResult({filterProducts}: {filterProducts: any}) {
             <h2 className='text-xl font-bold'>Results</h2>
             <p> Check each product page for other buying options. Price and other details may vary based on product size and color.</p>
          </div>
-         <div>
+         <div className='grid grid-cols-5 gap-3'>
             {
                 filterProducts.map((product: any)=>{
                        return <div key={product.id}>

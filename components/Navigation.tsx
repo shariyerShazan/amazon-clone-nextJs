@@ -14,7 +14,7 @@ function Navigation() {
     ]
   return (
     <div className='bg-[#232F3E] '>
-       <div className='flex w-[90%]  mx-auto py-0.5'>
+       <div className='flex w-[98%]  mx-auto py-0.5'>
        <div>
             <Button className='!bg-navColor hover:!bg-navColor !text-white !border !border-transparent hover:!border-white !cursor-pointer'>
                  <MdOutlineMenu size={25} /> All
