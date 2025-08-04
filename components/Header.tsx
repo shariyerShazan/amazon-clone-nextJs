@@ -7,8 +7,11 @@ import { IoMdSearch } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useAppSelector } from '@/hooks/redux';
+import { getCart } from '@/redux/cartSlice';
 
 function Header() {
+  const cart = useAppSelector(getCart)
   const [query, setQuery] = useState<string>()
   const router = useRouter()
 
@@ -77,6 +80,7 @@ function Header() {
           </div>
           <div className='relative mr-10'>
             <GrCart size={25} />
+            <p className='absolute text-myColor font-extrabold top-0 -right-5'>{cart?.length || 0}</p>
             <p className='absolute top-4.5 -right-8'>Cart</p>
           </div>
         </div>

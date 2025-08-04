@@ -2,8 +2,13 @@
 import Image from 'next/image'
 import { IoStar } from "react-icons/io5";
 import React from 'react'
+import { useAppDispatch } from '@/hooks/redux';
+import { addCart } from '@/redux/cartSlice';
 
 function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
+
+    const dispatch = useAppDispatch()
+
   if (!singleProduct || singleProduct.length === 0) {
     return <p className="text-center text-lg mt-10">Loading...</p>
   }
@@ -52,7 +57,9 @@ function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
 
               {/* Buttons */}
               <div className="flex gap-3 mt-5">
-                <button className="bg-yellow-400 px-6 py-2 rounded-md font-semibold hover:bg-yellow-500 transition">
+                <button
+                   onClick={()=> dispatch(addCart(product))}
+                   className="bg-yellow-400 px-6 py-2 rounded-md font-semibold hover:bg-yellow-500 transition">
                   Add to Cart
                 </button>
                 <button className="bg-orange-400 px-6 py-2 rounded-md font-semibold hover:bg-orange-500 transition">

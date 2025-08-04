@@ -1,6 +1,6 @@
 "use client"
 import SearchResult from "@/components/SearchResult"
-import { useSupabase } from "@/supabase/hooks/useSupabase"
+import { useSupabase } from "@/hooks/useSupabase"
 import { useParams } from "next/navigation"
 import React, { useEffect } from "react"
 

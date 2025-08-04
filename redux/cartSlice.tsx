@@ -9,9 +9,9 @@ const cartSlice = createSlice({
   },
   reducers: {
     addCart : (state , action)=>{
-        state.cart = action.payload
+        state.cart.push(action.payload)
     }
-  }
+  } 
 });
 
 export const {addCart} =  cartSlice.actions

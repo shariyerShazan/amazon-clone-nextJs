@@ -1,5 +1,5 @@
 "use client"
-import { useSupabase } from '@/supabase/hooks/useSupabase'
+import { useSupabase } from '@/hooks/useSupabase'
 import { useParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 import SingleProduct from '@/components/SingleProduct'
