@@ -7,9 +7,8 @@ import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { IoStar } from 'react-icons/io5'
 
-function CategoryPage() {  
+function CategoryProduct({category}) {  
   const router = useRouter()
-  const { category } = useParams()
   const { getCategoryProducts, categoryProduct } = useSupabase() 
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(true)
@@ -86,4 +85,4 @@ function CategoryPage() {
   )
 }
 
-export default CategoryPage
+export default CategoryProduct
