@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useAppSelector } from '@/hooks/redux';
 import { getCart } from '@/redux/cartSlice';
+import Link from 'next/link';
 
 function Header() {
   const cart = useAppSelector(getCart)
@@ -26,7 +27,8 @@ function Header() {
       <div className='flex justify-between gap-12 items-center w-[98%] mx-auto py-1'>
 
         {/* Left Section - Logo & Location */}
-        <div className='flex gap-6'>
+        <div className='flex gap-6 '>
+          <Link className=' border hover:border-white cursor-pointer border-transparent' href={"/"}>
           <Image 
             src="https://logos-world.net/wp-content/uploads/2020/04/Amazon-Emblem.jpg" 
             alt="Amazon Logo"
@@ -34,6 +36,7 @@ function Header() {
             height={50} 
             className='w-30 h-14 object-contain' 
           />
+          </Link>
           <div className='flex items-center p-1 border hover:border-white cursor-pointer border-transparent'>
             <span><IoLocationOutline size={20} /></span>
             <div className='flex flex-col gap-0 '>

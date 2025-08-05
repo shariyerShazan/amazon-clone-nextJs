@@ -14,6 +14,7 @@ export const useSupabase = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [filterProducts, setFilterProducts] = useState<Product[]>([])
   const [singleProduct, setSingleProduct] = useState<Product[]>([])
+  const [categoryProduct, setCategoryProduct] = useState<Product[]>([])
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*")
@@ -41,6 +42,7 @@ export const useSupabase = () => {
       console.log(error)
     }
   }
+
   const getSingleProduct = async (id:string) => {
     const { data, error } = await supabase
       .from("products")
@@ -55,12 +57,31 @@ export const useSupabase = () => {
     }
   }
 
+ 
+  const getCategoryProducts = async (category: string ) => {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .or(
+        `category.ilike.%${category}%`
+      )
+    if (data) {
+      setCategoryProduct(data)
+      console.log(data)
+    }
+    if (error) {
+      console.log(error)
+    }
+  }
+
   return {
     products,
     filterProducts,
     singleProduct ,
+    categoryProduct ,
     getProducts,
     getFilterProducts,
-    getSingleProduct
+    getSingleProduct ,
+    getCategoryProducts
   }
 }
