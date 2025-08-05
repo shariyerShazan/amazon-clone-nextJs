@@ -62,9 +62,7 @@ export const useSupabase = () => {
     const { data, error } = await supabase
       .from("products")
       .select("*")
-      .or(
-        `category.ilike.%${category}%`
-      )
+      .eq("category", category) 
     if (data) {
       setCategoryProduct(data)
       console.log(data)

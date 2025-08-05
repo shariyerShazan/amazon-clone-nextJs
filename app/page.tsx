@@ -1,9 +1,12 @@
+import HomePage from '@/components/HomePage'
+import React from 'react'
 
-
-export default function Home() {
+function page() {
   return (
-    <div>
-      okay
+    <div className='bg-gray-100'>
+      <HomePage />
     </div>
-  );
+  )
 }
+
+export default page

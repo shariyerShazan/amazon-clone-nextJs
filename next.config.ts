@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'logos-world.net',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'wallpapers.com',
+        pathname: '/**',
+      },
     ],
   },
 };
