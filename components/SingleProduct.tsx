@@ -46,6 +46,7 @@ function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
               </div>
               <p className="text-3xl text-gray-900 font-semibold">${product.price}</p>
               <p className="text-gray-700 leading-relaxed">{product.description}</p>
+              <p className="text-gray-700 leading-relaxed font-bold">Category: ({product.category})</p>
 
               {/* Quantity Selector */}
               <div className="flex items-center gap-3 mt-3 ">

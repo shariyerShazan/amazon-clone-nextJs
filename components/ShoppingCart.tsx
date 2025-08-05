@@ -2,12 +2,14 @@
 import { useAppSelector, useAppDispatch } from '@/hooks/redux'
 import { getCart, increaseQuantity, decreaseQuantity, removeFromCart } from '@/redux/cartSlice'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React, { useMemo } from 'react'
 import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 
 function ShoppingCart() {
+    const router = useRouter()
     const cart = useAppSelector(getCart)
     const dispatch = useAppDispatch()
 
@@ -16,6 +18,11 @@ function ShoppingCart() {
         return cart.reduce((acc, product) => acc + (product.price * (product.quantity || 1)), 0)
     }, [cart])
 
+
+    const handleDetails = (productId: string)=>{
+        router.push(`/product/${productId}`)
+  }
+
     return (
         <div className="p-6">
             {cart.length > 0 ? (
@@ -23,7 +30,7 @@ function ShoppingCart() {
                     {cart.map((product) => (
                         <div key={product?.id } className="flex items-center border-b py-4">
                             {/* Image Section */}
-                            <div className="relative w-32 h-32">
+                            <div onClick={()=>handleDetails(product.id)} className="relative w-32 h-32 cursor-pointer">
                                 <Image
                                     src={product?.image}
                                     alt={product?.title}
@@ -36,7 +43,7 @@ function ShoppingCart() {
 
                             {/* Details Section */}
                             <div className="ml-4 flex-1">
-                                <h2 className="text-lg font-semibold">{product?.title}</h2>
+                                <h2 onClick={()=>handleDetails(product.id)} className="text-lg font-semibold hover:text-myColor cursor-pointer">{product?.title}</h2>
                                 
                                 {/* Price Label */}
                                 <p className="text-xs text-gray-400 mt-1 font-bold">Price</p>
@@ -68,8 +75,8 @@ function ShoppingCart() {
                     ))}
 
                     {/* Subtotal Section */}
-                    <div className="flex justify-end gap-6 items-center mt-6 text-xl font-bold">
-                        <span>Subtotal:</span>
+                    <div className="flex  justify-end gap-3 items-center mt-6 text-xl font-bold">
+                        <span>Subtotal (<span>{cart?.length}</span> items):</span>
                         <span>${subtotal.toFixed(2)}</span>
                     </div>
                 </>
