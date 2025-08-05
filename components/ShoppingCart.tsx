@@ -46,7 +46,7 @@ function ShoppingCart() {
                                 <div className="flex items-center space-x-2 mt-2 border-2 border-myColor w-min rounded-3xl px-2 py-1">
                                     <button 
                                         onClick={() => product.quantity > 1 ? dispatch(decreaseQuantity(product.id)) : dispatch(removeFromCart(product.id))} 
-                                        className="px-2 py-1 rounded hover:scale-110"
+                                        className="px-2 py-1 rounded hover:scale-110 cursor-pointer"
                                     >
                                         {product.quantity > 1 ? <FiMinus size={20}/> : <MdDeleteOutline size={20} />}
                                     </button>
@@ -74,7 +74,7 @@ function ShoppingCart() {
                     </div>
                 </>
             ) : (
-                <p className="text-center text-gray-500">Your cart is empty.</p>
+                <p className="text-center text-gray-500 text-lg">Your cart is empty.</p>
             )}
         </div>
     )
