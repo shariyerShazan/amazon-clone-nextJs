@@ -32,11 +32,11 @@ function Header() {
             alt="Amazon Logo"
             width={120} 
             height={50} 
-            className='w-30 h-12 object-contain' 
+            className='w-30 h-14 object-contain' 
           />
-          <div className='flex items-center'>
+          <div className='flex items-center p-1 border hover:border-white cursor-pointer border-transparent'>
             <span><IoLocationOutline size={20} /></span>
-            <div className='flex flex-col gap-0'>
+            <div className='flex flex-col gap-0 '>
               <p className='text-sm'>Deliver to</p>
               <p className='font-bold'>Bangladesh</p>
             </div>
@@ -69,19 +69,19 @@ function Header() {
         </div>
 
         {/* Right Section - Account, Orders & Cart */}
-        <div className='flex gap-6'>
-          <div className='flex flex-col gap-0'>
+        <div className='flex gap-6 '>
+          <div className='flex flex-col gap-0 p-1 border hover:border-white cursor-pointer border-transparent'>
             <p className='text-sm'>Hello sign in</p>
             <p className='font-bold'>Account & List</p>
           </div>
-          <div className='flex flex-col gap-0'>
+          <div className='flex flex-col gap-0 p-1 border hover:border-white cursor-pointer border-transparent'>
             <p className='text-sm'>Return</p>
             <p className='font-bold'>& Order</p>
           </div>
-          <div className='relative mr-10'>
-            <GrCart size={25} />
-            <p className='absolute text-myColor font-extrabold top-0 -right-5'>{cart?.length || 0}</p>
-            <p className='absolute top-4.5 -right-8'>Cart</p>
+          <div onClick={()=>router.push("/cart")} className='relative pr-8 pl-6 mr-10 border hover:border-white cursor-pointer border-transparent'>
+            <GrCart className=' absolute right-7' size={25} />
+            <p className='absolute text-myColor font-extrabold top-0 right-2'>{cart?.length || 0}</p>
+            <p className='absolute top-4.5 right-1'>Cart</p>
           </div>
         </div>
 

@@ -48,9 +48,9 @@ function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
               <p className="text-gray-700 leading-relaxed">{product.description}</p>
 
               {/* Quantity Selector */}
-              <div className="flex items-center gap-3 mt-3">
+              <div className="flex items-center gap-3 mt-3 ">
                 <label htmlFor="quantity" className="font-medium">Quantity:</label>
-                <select id="quantity" className="border rounded px-2 py-1">
+                <select id="quantity" className="border rounded px-2 py-1 cursor-pointer">
                   {[1, 2, 3, 4, 5 , 6 , 7, 8, 9, 10].map(quantity => <option key={quantity} value={quantity}>{quantity}</option>)}
                 </select>
               </div>
@@ -59,10 +59,10 @@ function SingleProduct({ singleProduct }: { singleProduct: any[] }) {
               <div className="flex gap-3 mt-5">
                 <button
                    onClick={()=> dispatch(addCart(product))}
-                   className="bg-yellow-400 px-6 py-2 rounded-md font-semibold hover:bg-yellow-500 transition">
+                   className="bg-yellow-400 px-6 py-2 rounded-md font-semibold hover:bg-yellow-500 transition cursor-pointer">
                   Add to Cart
                 </button>
-                <button className="bg-orange-400 px-6 py-2 rounded-md font-semibold hover:bg-orange-500 transition">
+                <button className="bg-orange-400 px-6 py-2 rounded-md font-semibold hover:bg-orange-500 transition cursor-pointer">
                   Buy Now
                 </button>
               </div>

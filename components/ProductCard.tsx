@@ -1,10 +1,14 @@
 "use client"
+import { useAppDispatch } from '@/hooks/redux';
+import { addCart } from '@/redux/cartSlice';
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { IoStar } from "react-icons/io5";
 
 function ProductCard({ product }: { product: any }) {
+
+  const dispatch = useAppDispatch()
 
     const router = useRouter()
   const ratingObj = product?.rating ? JSON.parse(product.rating) : { rate: 0, count: 0 };
@@ -41,7 +45,7 @@ function ProductCard({ product }: { product: any }) {
 
         <div className="mt-3 flex items-center justify-between">
           <span className="text-lg font-bold text-gray-900">${product.price}</span>
-          <button className="bg-yellow-400 text-black px-3 py-1 rounded-sm font-semibold hover:bg-yellow-500 transition cursor-pointer">
+          <button  onClick={()=> dispatch(addCart(product))} className="bg-yellow-400 text-black px-3 py-1 rounded-sm font-semibold hover:bg-yellow-500 transition cursor-pointer">
             Add to Cart
           </button>
         </div>
