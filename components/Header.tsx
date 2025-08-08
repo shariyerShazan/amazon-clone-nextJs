@@ -19,21 +19,28 @@ function Header() {
   const [user, setUser] = useState<any>(null)
   const [isMounted, setIsMounted] = useState(false)
 
-  // Check hydration status
   useEffect(() => {
     setIsMounted(true)
-  }, [])
 
-  // Get user data from Supabase
-  useEffect(() => {
     const getUserData = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
     }
     getUserData()
+
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT") {
+        setUser(null)
+      } else if (event === "SIGNED_IN") {
+        setUser(session?.user)
+      }
+    })
+
+    return () => {
+      listener.subscription.unsubscribe()
+    }
   }, [])
 
-  // Handle search submit
   const searchHandler = () => {
     if (query?.trim() !== "") {
       router.push(`/search/${query}`)
@@ -43,8 +50,6 @@ function Header() {
   return (
     <div className='bg-myColorTwo text-white'>
       <div className='flex justify-between gap-12 items-center w-[98%] mx-auto py-1'>
-
-        {/* Left Section - Logo & Location */}
         <div className='flex gap-6 '>
           <Link className='border hover:border-white cursor-pointer border-transparent' href={"/"}>
             <Image
@@ -64,7 +69,6 @@ function Header() {
           </div>
         </div>
 
-        {/* Middle Section - Search Bar */}
         <div className='flex flex-1'>
           <form
             onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -89,11 +93,10 @@ function Header() {
           </form>
         </div>
 
-        {/* Right Section - Account, Orders & Cart */}
         <div className='flex gap-6 '>
           <div onClick={() => { router.push("/login") }} className='flex flex-col gap-0 p-1 border hover:border-white cursor-pointer border-transparent'>
             <p className='text-sm'>
-              Hello, {!isMounted ? "..." : user ? `${user?.identities?.[0]?.identity_data?.full_name}` : "login"}
+              Hello, {!isMounted ? "..." : user ? `${user?.user_metadata?.full_name || "User"}` : "login"}
             </p>
             <p className='font-bold'>Account & List</p>
           </div>
@@ -107,7 +110,6 @@ function Header() {
             <p className='absolute top-7 right-1'>Cart</p>
           </div>
         </div>
-
       </div>
     </div>
   )
