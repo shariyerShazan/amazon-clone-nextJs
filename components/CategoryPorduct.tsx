@@ -81,6 +81,7 @@ function CategoryProduct({category}) {
           )
         })
       )}
+      
     </div>
   )
 }
