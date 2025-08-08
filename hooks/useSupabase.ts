@@ -20,7 +20,7 @@ export const useSupabase = () => {
     const { data, error } = await supabase.from("products").select("*")
     if (data) {
       setProducts(data)
-      console.log(data)
+      // console.log(data)
     }
     if (error) {
       console.log(error)
@@ -36,7 +36,7 @@ export const useSupabase = () => {
       )
     if (data) {
       setFilterProducts(data)
-      console.log(data)
+      // console.log(data)
     }
     if (error) {
       console.log(error)
@@ -50,7 +50,7 @@ export const useSupabase = () => {
       .eq("id" , id)
     if (data) {
         setSingleProduct(data)
-      console.log(data)
+      // console.log(data)
     }
     if (error) {
       console.log(error)
@@ -65,7 +65,7 @@ export const useSupabase = () => {
       .eq("category", category) 
     if (data) {
       setCategoryProduct(data)
-      console.log(data)
+      // console.log(data)
     }
     if (error) {
       console.log(error)

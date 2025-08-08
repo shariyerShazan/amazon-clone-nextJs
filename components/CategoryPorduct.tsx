@@ -30,10 +30,10 @@ function CategoryProduct({category}) {
 
   return (
     <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-      {categoryProduct?.length === 0 ? ( // <-- এখানেও পরিবর্তন
+      {categoryProduct?.length === 0 ? (
         <p className="col-span-full text-center text-gray-500">No products found for this category</p>
       ) : (
-        categoryProduct.map((product: any) => {
+        categoryProduct.slice(0, 10).map((product: any) => {
           const ratingObj = product?.rating ? JSON.parse(product.rating) : { rate: 0, count: 0 }
           const stars = Math.round(ratingObj.rate)
           const reviewCount = ratingObj.count
